@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
 
 namespace SnakeGame
 {
-    internal struct Pixel
+    public struct Pixel
     {
         private const char PixelChar = '█';
         public int X { get; }
@@ -23,6 +19,7 @@ namespace SnakeGame
         }  
         public void Draw()
         {
+            ForegroundColor = Color;
             for(int x = 0; x < PixelSize; x++)
             {
                 for(int y = 0; y < PixelSize; y++)
@@ -34,8 +31,14 @@ namespace SnakeGame
         }
         public void Clear()
         {
-            SetCursorPosition(X, Y);
-            Write(' ');
+            for (int x = 0; x < PixelSize; x++)
+            {
+                for (int y = 0; y < PixelSize; y++)
+                {
+                    SetCursorPosition(X * PixelSize + x, Y * PixelSize + y);
+                    Write(' ');
+                }
+            }
         }
     }
 }

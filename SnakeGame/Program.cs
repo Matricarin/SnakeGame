@@ -9,6 +9,8 @@ const int ScreenWidth = MapWidth * 3;
 const int ScreenHeight = MapHeight * 3;
 
 const ConsoleColor BorderColor = ConsoleColor.Gray;
+const ConsoleColor HeadColor = ConsoleColor.DarkGreen;
+const ConsoleColor BodyColor = ConsoleColor.Green;
 #endregion
 
 
@@ -21,6 +23,7 @@ CursorVisible = false;
 
 #region MainLogic
 DrawBorder();
+Snake snake = new Snake(17, 10, HeadColor, BodyColor);
 ReadKey();
 #endregion
 

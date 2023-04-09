@@ -41,13 +41,17 @@ namespace SnakeGame
                 p.Clear();
             }
         }
-        public void Move(Directions direction)
+        public void Move(Directions direction, bool eat = false)
         {
             Clear();
 
             Body.Enqueue(new Pixel(Head.X, Head.Y, _bodyColor));
 
-            Body.Dequeue();
+            if(!eat)
+            {
+                Body.Dequeue();
+            }
+            
             Head = direction switch
             {
                 Directions.Up => new Pixel(Head.X, Head.Y - 1, _headColor),

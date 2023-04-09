@@ -41,5 +41,23 @@ namespace SnakeGame
                 p.Clear();
             }
         }
+        public void Move(Directions direction)
+        {
+            Clear();
+
+            Body.Enqueue(new Pixel(Head.X, Head.Y, _bodyColor));
+
+            Body.Dequeue();
+            Head = direction switch
+            {
+                Directions.Up => new Pixel(Head.X, Head.Y + 1, _headColor),
+                Directions.Down => new Pixel(Head.X, Head.Y - 1, _headColor),
+                Directions.Left => new Pixel(Head.X + 1, Head.Y, _headColor),
+                Directions.Right => new Pixel(Head.X - 1, Head.Y + 1, _headColor)
+                _ => Head
+            };
+
+            Draw();
+    }
     }
 }
